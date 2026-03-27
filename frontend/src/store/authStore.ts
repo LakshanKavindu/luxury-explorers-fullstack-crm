@@ -20,7 +20,7 @@
  */
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import { login as loginApi, logout as logoutApi } from "../api/authApi";
+import { login as loginApi, logout as logoutApi, getMe as getMeApi } from "../api/authApi";
 import type { UserProfile, LoginRequest, AuthState } from "../types/auth";
 
 interface AuthActions {
@@ -53,10 +53,18 @@ export const useAuthStore = create<AuthStore>()(
        */
       login: async (credentials: LoginRequest): Promise<void> => {
         const data = await loginApi(credentials);
+        
+        // Set tokens first so the Axios interceptor picks them up for the next request
         set({
-          user:            data.user,
           accessToken:     data.access,
           refreshToken:    data.refresh,
+        });
+
+        // Fetch /auth/me after login as required
+        const user = await getMeApi();
+
+        set({
+          user:            user,
           isAuthenticated: true,
         });
       },
