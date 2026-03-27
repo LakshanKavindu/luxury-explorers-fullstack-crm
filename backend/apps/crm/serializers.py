@@ -33,6 +33,8 @@ Why `company` for Contact is a PrimaryKeyRelatedField, not a nested write
   the requesting user's organization in __init__, so a client cannot link
   a contact to a company they don't own.
 """
+from __future__ import annotations
+
 import re
 from rest_framework import serializers
 from apps.crm.models import Company, Contact
