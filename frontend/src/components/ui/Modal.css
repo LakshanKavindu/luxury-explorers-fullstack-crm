@@ -92,6 +92,7 @@
   border-radius: 8px;
   font-size: 15px;
   color: #0f172a;
+  background-color: white;
   outline: none;
   transition: all 0.2s;
 }

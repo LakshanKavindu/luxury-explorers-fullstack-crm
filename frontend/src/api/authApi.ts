@@ -20,11 +20,11 @@ const AUTH_BASE = "/auth";
  * The frontend auth store should call this and store all three.
  */
 export async function login(credentials: LoginRequest): Promise<LoginResponse> {
-  const response = await apiClient.post<{ success: boolean; data: LoginResponse }>(
+  const response = await apiClient.post<LoginResponse>(
     `${AUTH_BASE}/token/`,
     credentials
   );
-  return response.data.data;
+  return response.data;
 }
 
 /**
@@ -32,11 +32,11 @@ export async function login(credentials: LoginRequest): Promise<LoginResponse> {
  * Called automatically by the Axios interceptor — rarely needed directly.
  */
 export async function refreshToken(refresh: string): Promise<{ access: string; refresh: string }> {
-  const response = await apiClient.post<{
-    success: boolean;
-    data: { access: string; refresh: string };
-  }>(`${AUTH_BASE}/token/refresh/`, { refresh });
-  return response.data.data;
+  const response = await apiClient.post<{ access: string; refresh: string }>(
+    `${AUTH_BASE}/token/refresh/`,
+    { refresh }
+  );
+  return response.data;
 }
 
 /**
@@ -54,19 +54,19 @@ export async function logout(refresh: string): Promise<void> {
  * but you want to confirm it's still valid.
  */
 export async function getMe(): Promise<UserProfile> {
-  const response = await apiClient.get<{ success: boolean; data: UserProfile }>(
+  const response = await apiClient.get<UserProfile>(
     `${AUTH_BASE}/me/`
   );
-  return response.data.data;
+  return response.data;
 }
 
 /**
  * Update the current user's own full_name.
  */
 export async function updateMe(fullName: string): Promise<UserProfile> {
-  const response = await apiClient.patch<{ success: boolean; data: UserProfile }>(
-    `${AUTH_BASE}/me/`,
+  const response = await apiClient.patch<UserProfile>(
+    `${AUTH_BASE}/me//`,
     { full_name: fullName }
   );
-  return response.data.data;
+  return response.data;
 }

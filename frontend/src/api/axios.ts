@@ -83,7 +83,17 @@ apiClient.interceptors.request.use(
 // ── Response interceptor (401 → auto-refresh) ─────────────────────────────────
 
 apiClient.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    // If it's our standard backend envelope, unwrap it.
+    // This ensures apiClient.get(...).then(res => res.data) points to the actual payload.
+    if (response.data && typeof response.data === 'object' && 'success' in response.data) {
+      return {
+        ...response,
+        data: response.data.data
+      };
+    }
+    return response;
+  },
   async (error: AxiosError) => {
     const originalRequest = error.config as AxiosRequestConfig & {
       _retry?: boolean;

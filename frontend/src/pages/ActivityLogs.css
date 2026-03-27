@@ -1,0 +1,118 @@
+.logsContainer {
+  padding: 40px;
+  width: 100%;
+}
+
+.logSearch {
+  margin-bottom: 24px;
+}
+
+.logSearchInput {
+  padding: 10px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 300px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.logSearchInput:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.logsTableCard {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  width: 100%;
+}
+
+.logsTable {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.logsTable th {
+  background-color: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 16px 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.logsTable td {
+  padding: 16px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #0f172a;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.logsTable tr:last-child td {
+  border-bottom: none;
+}
+
+.logsTable tr:hover td {
+  background-color: #f8fafc;
+}
+
+.actionBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.actionBadge.create {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.actionBadge.update {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.actionBadge.delete {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.logMeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.logMeta p {
+  margin: 0 0 4px 0;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.logMeta span {
+  font-size: 12px;
+  color: #64748b;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Common loading & empty styles reusable from standard UI */
+.logsLoading {
+  padding: 64px;
+  display: flex;
+  justify-content: center;
+}

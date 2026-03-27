@@ -1,7 +1,7 @@
 import apiClient from "./axios";
 import type { Contact, PaginatedResponse, ContactListFilters } from "../types/crm";
 
-const CONTACTS_BASE = "/crm/contacts/";
+const CONTACTS_BASE = "/contacts/";
 
 /**
  * Clean up empty params

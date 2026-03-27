@@ -55,3 +55,23 @@ export interface ContactListFilters {
   page?: number;
   page_size?: number;
 }
+
+// ── Activity Log ─────────────────────────────────────────────────────────────
+export interface ActivityLog {
+  id: string;
+  user_display: string;
+  action: number;
+  action_display: string; // 'Create', 'Update', 'Delete'
+  model_name: string;
+  object_id: string;
+  object_repr: string;
+  timestamp: string;
+}
+
+export interface ActivityLogFilters {
+  search?: string;
+  page?: number;
+  page_size?: number;
+  ordering?: string; // default "-timestamp"
+}
+

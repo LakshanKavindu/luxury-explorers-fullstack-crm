@@ -5,7 +5,7 @@
 import apiClient from "./axios";
 import type { Company, PaginatedResponse, CompanyListFilters } from "../types/crm";
 
-const COMPANIES_BASE = "/crm/companies/";
+const COMPANIES_BASE = "/companies/";
 
 /**
  * Clean up empty strings or undefined from query params so they don't get sent.

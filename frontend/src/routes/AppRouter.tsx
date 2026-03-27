@@ -5,6 +5,8 @@ import Login from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
 import Companies from '../pages/Companies';
 import CompanyDetail from '../pages/CompanyDetail';
+import Contacts from '../pages/Contacts';
+import ActivityLogs from '../pages/ActivityLogs';
 
 export default function AppRouter() {
   return (
@@ -17,6 +19,8 @@ export default function AppRouter() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/companies" element={<Companies />} />
             <Route path="/companies/:id" element={<CompanyDetail />} />
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/activity-logs" element={<ActivityLogs />} />
             {/* Default protected route */}
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
           </Route>
