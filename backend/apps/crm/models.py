@@ -37,6 +37,15 @@ def validate_phone(value: str) -> None:
             "Phone number must contain 8–15 digits with no spaces, dashes, or symbols."
         )
 
+def validate_image_size(image):
+    """
+    Validates that the uploaded image size is under 2MB.
+    Ideal for AWS S3 Free Tier and fast loading times.
+    """
+    max_size_kb = 2048
+    if image.size > max_size_kb * 1024:
+        raise ValidationError(f"Image size cannot exceed {max_size_kb / 1024}MB.")
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Company
@@ -91,9 +100,11 @@ class Company(models.Model):
         upload_to="logos/",
         blank=True,
         null=True,
+        validators=[validate_image_size],
         help_text=(
             "Company logo. Stored on S3 in production. "
-            "Served via pre-signed URLs — bucket is private."
+            "Served via pre-signed URLs — bucket is private. "
+            "Max size: 2MB to optimize Free Tier usage."
         ),
     )
     is_deleted = models.BooleanField(
